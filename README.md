@@ -37,6 +37,11 @@ Diff = A ⊕ B ⊕ Bin
 Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
+FULL ADDER
+<img width="275" alt="ex 4 truth table(full adder)" src="https://github.com/user-attachments/assets/f9ddc6fe-1832-480f-a599-59d1b788ec7e" />
+FULL SUBTRACTOR
+<img width="288" alt="ex 4 truth table(full subtractor)" src="https://github.com/user-attachments/assets/90baa0fd-068c-4d5e-9ca3-92b0741c78c8" />
+
 
 **Procedure**
 
@@ -44,12 +49,62 @@ Write the detailed procedure here
 
 **Program:**
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
+FULL ADDER
+
+module experiment4(sum,cout,a,b,cin);
+output sum;
+output cout;
+input a;
+input b;
+input cin;
+//internal nets
+wire s1,c1,c2;
+//Instantiate logic gate primitives
+xor (s1,a,b);
+and(c1,a,b);
+xor(sum,s1,cin);
+and(c2,s1,cin);
+or(cout,c2,c1);
+endmodule
+
+FULL SUBTRACTOR
+
+module experiment4a (df, bo, a, b, bin);
+output df;
+output bo;
+input a;
+input b;
+input bin;
+wire w1,w2, w3;
+assign w1=a^b;
+assign w2=(~a&b);
+assign w3=(-w1&bin);
+assign df-w1^bin;
+assign bo-w2/w3;
+endmodule
+Developed by: Sriranjani.M
+RegisterNumber:24900016
 */
 
 **RTL Schematic**
+FULL ADDER
+<img width="565" alt="ex 4" src="https://github.com/user-attachments/assets/39297a09-1d69-4db0-a524-db3b36180784" />
+
+FULL SUBTRACTOR
+<img width="658" alt="ex 4 full subtractor" src="https://github.com/user-attachments/assets/ced7df62-ab1f-4aeb-97a5-b2a01966368e" />
+
+
+
 
 **Output Timing Waveform**
+FULL ADDER
+<img width="623" alt="ex 4 timing diagram(full adder)" src="https://github.com/user-attachments/assets/f84923a3-2438-442c-9e6f-09d54fbd1240" />
+
+FULL SUBTRACTOR
+<img width="619" alt="ex 4 timing diagram(full subtractor)" src="https://github.com/user-attachments/assets/921c2889-f468-4aa7-86e6-f94a5bf5f83e" />
+
+
 
 **Result:**
 
